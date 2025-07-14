@@ -1,4 +1,5 @@
- <!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Birthday Wishes from shyness_boy_sasi_</title>
@@ -10,101 +11,133 @@
       color: #fff;
       text-align: center;
       overflow: hidden;
-    }.overlay {
-  background: rgba(0, 0, 0, 0.55);
-  min-height: 100vh;
-  padding: 60px 20px;
-  position: relative;
-  z-index: 1;
-}
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.55);
+      min-height: 100vh;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 48px;
+      color: #ffdd57;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff6699; }
+      to   { text-shadow: 0 0 20px #ff6699, 0 0 30px #ff3366; }
+    }
+    input, button {
+      padding: 12px 18px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    input { width: 300px; max-width: 90%; }
+    button:hover { transform: scale(1.05); }
+    .hidden { display: none; }
+    .letter {
+      background: rgba(255, 255, 255, 0.9);
+      color: #222;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 12px;
+      font-size: 20px;
+      line-height: 1.6;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      white-space: pre-wrap;
+      text-align: left;
+    }
 
-h1 {
-  font-size: 48px;
-  color: #ffdd57;
-  margin-bottom: 20px;
-  animation: glow 2s ease-in-out infinite alternate;
-}
+    .animated {
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff6699; }
-  to   { text-shadow: 0 0 20px #ff6699, 0 0 30px #ff3366; }
-}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-input, button {
-  padding: 12px 18px;
-  margin: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
+    .pulse-glow {
+      animation: pulseGlow 1.2s infinite;
+      background: #ff3366;
+      color: #fff;
+      border: none;
+      box-shadow: 0 0 0 rgba(255, 51, 102, 0.7);
+    }
 
-input { width: 300px; max-width: 90%; }
-button:hover { transform: scale(1.05); }
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(255, 51, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
+      }
+    }
 
-.hidden { display: none; }
+    #musicBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: #ff3366;
+      color: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    }
 
-.letter {
-  background: rgba(255, 255, 255, 0.9);
-  color: #222;
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 30px;
-  border-radius: 12px;
-  font-size: 20px;
-  line-height: 1.6;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      width: 24px;
+      height: 24px;
+      background: url('https://i.imgur.com/7xq6GDL.png') center/contain no-repeat;
+      animation: float 7s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
 
-#musicBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  background: #ff3366;
-  color: #fff;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
-}
+    @keyframes float {
+      0%   { transform: translateX(0) translateY(0) scale(0.5); opacity:0; }
+      10%  { opacity:1; }
+      100% { transform: translateX(var(--hShift)) translateY(-120vh) scale(1.2); opacity:0; }
+    }
 
-.heart {
-  position: fixed;
-  bottom: -40px;
-  width: 24px;
-  height: 24px;
-  background: url('https://i.imgur.com/7xq6GDL.png') center/contain no-repeat;
-  animation: float 7s linear infinite;
-  opacity: 0.8;
-  pointer-events: none;
-}
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: red;
+      animation: drop 4s linear infinite;
+      z-index: 10000;
+    }
 
-@keyframes float {
-  0%   { transform: translateX(0) translateY(0) scale(0.5); opacity:0; }
-  10%  { opacity:1; }
-  100% { transform: translateX(var(--hShift)) translateY(-120vh) scale(1.2); opacity:0; }
-}
-
-.confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: red;
-  animation: drop 4s linear infinite;
-  z-index: 10000;
-}
-
-@keyframes drop {
-  0% { transform: translateY(-100px); }
-  100% { transform: translateY(100vh); }
-}
-
+    @keyframes drop {
+      0% { transform: translateY(-100px); }
+      100% { transform: translateY(100vh); }
+    }
   </style>
 </head>
 <body>
@@ -112,36 +145,38 @@ button:hover { transform: scale(1.05); }
   <div id="confetti-container"></div>
   <div class="overlay">
     <audio id="bgMusic" src="Heeriye Arijit Singh 320 Kbps.mp3" autoplay loop></audio>
-    <button id="musicBtn" onclick="toggleMusic()">⏸️</button><div id="page1">
-  <h1>🎂 Birthday Wishes from shyness_boy_sasi_ 🎂</h1>
-  <p>Enter your name my freind :</p>
-  <input type="text" id="nameInput" placeholder="Enter name">
-  <br>
-  <button onclick="goToPage2()">Next</button>
-</div>
+    <audio id="typingSound" src="https://www.soundjay.com/mechanical/keyboard-1.mp3" preload="auto"></audio>
 
-<div id="page2" class="hidden">
-  <h1>Pick a letter style for <span id="personName"></span></h1>
-  <button onclick="showLetter(1)">Option 1 💌</button>
-  <button onclick="showLetter(2)">Option 2 🤪</button>
-</div>
+    <button id="musicBtn" onclick="toggleMusic()">⏸️</button>
 
-<div id="page3" class="hidden">
-  <div class="letter" id="letterContent"></div>
-  <br>
-  <button onclick="showFinalPage()">Next ➡️</button>
-</div>
+    <div id="page1">
+      <h1>🎂 Birthday Wishes from shyness_boy_sasi_ 🎂</h1>
+      <p>Enter your name my freind :</p>
+      <input type="text" id="nameInput" placeholder="Enter name">
+      <br>
+      <button onclick="goToPage2()">Next</button>
+    </div>
 
-<div id="page4" class="hidden">
-  <h1>🎉 Enjoy the Birthday! 🎉</h1>
-  <div class="letter">
-    Enjoy the birthday with full of joy.<br>
-    I am your side always forever. <br><br>
-    — <strong>shyness_boy_sasi_</strong>
+    <div id="page2" class="hidden">
+      <h1>Pick a letter style for <span id="personName"></span></h1>
+      <button onclick="showLetterInTab(1)">Letter 1 💌</button>
+      <button onclick="showLetterInTab(2)">Letter 2 🤪</button>
+
+      <div id="letterTab" class="letter animated hidden" style="margin-top: 20px;"></div>
+      <button id="nextBtn" class="hidden" onclick="showFinalPage()">Next ➡️</button>
+    </div>
+
+    <div id="page4" class="hidden">
+      <h1>🎉 Enjoy the Birthday! 🎉</h1>
+      <div class="letter">
+        Enjoy the birthday with full of joy.<br>
+        I am your side always forever. <br><br>
+        — <strong>shyness_boy_sasi_</strong>
+      </div>
+    </div>
   </div>
-</div>
 
-  </div>  <script>
+  <script>
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('musicBtn');
     function toggleMusic(){
@@ -156,15 +191,40 @@ button:hover { transform: scale(1.05); }
       document.getElementById('personName').innerText = name;
       swap('page1','page2');
     }
-    function showLetter(opt){
-      const letter1 = `Another year older… and still no wiser! 😂\n\nBut hey ${name}, at least you’re aging like a fine cheese – a little funky, but still a classic.\n\nHope your day is packed with cake, chaos, and questionable decisions (the good kind). Don’t stress about getting older – you're still younger than you’ll be next year! 😎🎉\n\nNow go celebrate like your metabolism still works!\n\n— shyness_boy_sasi_`;
-      const letter2 = `Wishing you the happiest of birthdays, ${name}! 🥳\n\nYou’re not just getting older today—you’re getting even more awesome. I hope your day overflows with love, laughter, cake, and everything you enjoy most.\n\nSo grateful to know you—here’s to another year of great memories and good vibes! 🎂🎈\n\nHave an amazing day—you deserve it! 🙌\n\n— shyness_boy_sasi_`;
-      document.getElementById('letterContent').innerText = opt === 1 ? letter1 : letter2;
-      swap('page2','page3');
+
+    function showLetterInTab(opt) {
+      const letter1 = `🎉 Another year older… and still no wiser! 😂\n\nHey ${name}, you're aging like fine cheese — a little funky but still loved! 💛\n\nWishing you a day full of laughter, cake, and fun chaos. 😎\n\n— shyness_boy_sasi_`;
+      const letter2 = `💖 Happy Birthday, ${name}!\n\nYou're not just older, you're even more amazing! 🌟\n\nHope today overflows with love, cake, and laughter. 🎂\n\nThanks for being YOU. 🙌\n\n— shyness_boy_sasi_`;
+
+      const letter = opt === 1 ? letter1 : letter2;
+      const letterDiv = document.getElementById('letterTab');
+      const typingSound = document.getElementById('typingSound');
+      letterDiv.textContent = '';
+      letterDiv.classList.remove('hidden');
+      letterDiv.classList.add('animated');
+
+      const nextBtn = document.getElementById('nextBtn');
+      nextBtn.classList.add('hidden');
+      nextBtn.classList.remove('pulse-glow');
+
+      let i = 0;
+      function typeChar() {
+        if (i < letter.length) {
+          letterDiv.textContent += letter.charAt(i);
+          typingSound.currentTime = 0;
+          typingSound.play();
+          i++;
+          setTimeout(typeChar, 30); // Typing speed
+        } else {
+          nextBtn.classList.remove('hidden');
+          nextBtn.classList.add('pulse-glow');
+        }
+      }
+      typeChar();
     }
 
     function showFinalPage() {
-      swap('page3','page4');
+      swap('page2','page4');
     }
 
     function swap(hideId,showId){
@@ -188,7 +248,6 @@ button:hover { transform: scale(1.05); }
     }
     setInterval(createHeart, 500);
 
-    // 🎉 Confetti drop
     function createConfetti() {
       const c = document.createElement("div");
       c.className = "confetti";
@@ -199,5 +258,6 @@ button:hover { transform: scale(1.05); }
       setTimeout(() => c.remove(), 5000);
     }
     setInterval(createConfetti, 250);
-  </script></body>
+  </script>
+</body>
 </html>
