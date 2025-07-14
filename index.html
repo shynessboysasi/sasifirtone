@@ -54,23 +54,14 @@
       white-space: pre-wrap;
       text-align: left;
     }
-
     .animated {
       animation: fadeInUp 1s ease forwards;
       opacity: 0;
     }
-
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
     .pulse-glow {
       animation: pulseGlow 1.2s infinite;
       background: #ff3366;
@@ -78,19 +69,20 @@
       border: none;
       box-shadow: 0 0 0 rgba(255, 51, 102, 0.7);
     }
-
     @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 20px rgba(255, 51, 102, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(255, 51, 102, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(255, 51, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
     }
-
+    .typewriter-cursor::after {
+      content: "|";
+      animation: blink 0.7s infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
     #musicBtn {
       position: fixed;
       bottom: 20px;
@@ -107,7 +99,6 @@
       font-size: 26px;
       box-shadow: 0 4px 10px rgba(0,0,0,.2);
     }
-
     .heart {
       position: fixed;
       bottom: -40px;
@@ -118,13 +109,11 @@
       opacity: 0.8;
       pointer-events: none;
     }
-
     @keyframes float {
-      0%   { transform: translateX(0) translateY(0) scale(0.5); opacity:0; }
-      10%  { opacity:1; }
+      0% { transform: translateX(0) translateY(0) scale(0.5); opacity:0; }
+      10% { opacity:1; }
       100% { transform: translateX(var(--hShift)) translateY(-120vh) scale(1.2); opacity:0; }
     }
-
     .confetti {
       position: fixed;
       width: 8px;
@@ -133,7 +122,6 @@
       animation: drop 4s linear infinite;
       z-index: 10000;
     }
-
     @keyframes drop {
       0% { transform: translateY(-100px); }
       100% { transform: translateY(100vh); }
@@ -163,6 +151,8 @@
       <button onclick="showLetterInTab(2)">Letter 2 🤪</button>
 
       <div id="letterTab" class="letter animated hidden" style="margin-top: 20px;"></div>
+      <button id="replayBtn" class="hidden" onclick="replayLetter()">🔁 Replay Letter</button>
+      <br>
       <button id="nextBtn" class="hidden" onclick="showFinalPage()">Next ➡️</button>
     </div>
 
@@ -179,6 +169,8 @@
   <script>
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('musicBtn');
+    let currentLetterOption = 1;
+
     function toggleMusic(){
       if(music.paused){ music.play(); btn.textContent='⏸️'; }
       else { music.pause(); btn.textContent='▶️'; }
@@ -193,19 +185,23 @@
     }
 
     function showLetterInTab(opt) {
+      currentLetterOption = opt;
       const letter1 = `🎉 Another year older… and still no wiser! 😂\n\nHey ${name}, you're aging like fine cheese — a little funky but still loved! 💛\n\nWishing you a day full of laughter, cake, and fun chaos. 😎\n\n— shyness_boy_sasi_`;
       const letter2 = `💖 Happy Birthday, ${name}!\n\nYou're not just older, you're even more amazing! 🌟\n\nHope today overflows with love, cake, and laughter. 🎂\n\nThanks for being YOU. 🙌\n\n— shyness_boy_sasi_`;
-
       const letter = opt === 1 ? letter1 : letter2;
+
       const letterDiv = document.getElementById('letterTab');
       const typingSound = document.getElementById('typingSound');
+      const nextBtn = document.getElementById('nextBtn');
+      const replayBtn = document.getElementById('replayBtn');
+
       letterDiv.textContent = '';
       letterDiv.classList.remove('hidden');
-      letterDiv.classList.add('animated');
+      letterDiv.classList.add('animated', 'typewriter-cursor');
 
-      const nextBtn = document.getElementById('nextBtn');
       nextBtn.classList.add('hidden');
       nextBtn.classList.remove('pulse-glow');
+      replayBtn.classList.add('hidden');
 
       let i = 0;
       function typeChar() {
@@ -214,13 +210,19 @@
           typingSound.currentTime = 0;
           typingSound.play();
           i++;
-          setTimeout(typeChar, 30); // Typing speed
+          setTimeout(typeChar, 35);
         } else {
+          letterDiv.classList.remove('typewriter-cursor');
           nextBtn.classList.remove('hidden');
           nextBtn.classList.add('pulse-glow');
+          replayBtn.classList.remove('hidden');
         }
       }
       typeChar();
+    }
+
+    function replayLetter() {
+      showLetterInTab(currentLetterOption);
     }
 
     function showFinalPage() {
